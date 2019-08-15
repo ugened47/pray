@@ -21,21 +21,18 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(widget.title, style: TextStyle(fontSize: 48)),
         actions: <Widget>[
-          Padding(
-              padding: const EdgeInsets.all(15),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          FavoriteSaintsPage(title: 'Favorite saints'),
-                    ),
-                  );
-                },
-                splashColor: Colors.blue.withAlpha(30),
-                child: Icon(Icons.star),
-              ))
+          IconButton(
+            icon: Icon(Icons.star),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      FavoriteSaintsPage(title: 'Favorite saints'),
+                ),
+              );
+            },
+          )
         ],
       ),
       body: Center(

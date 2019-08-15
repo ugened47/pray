@@ -30,6 +30,7 @@ dependencies:
   provider: any
   transparent_image: any
   rxdart: any
+  oktoast: any
 
 dev_dependencies:
   flutter_test:

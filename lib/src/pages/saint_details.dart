@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:pray/src/models/saint.dart';
 import 'package:pray/src/pages/favorite_saints.dart';
 import 'package:pray/src/widgets/saints_icons_list.dart';
@@ -18,21 +19,19 @@ class SaintDetails extends StatelessWidget {
       appBar: AppBar(
         title: Text(saint.title, style: TextStyle(fontSize: 48)),
           actions: <Widget>[
-          Padding(
-              padding: const EdgeInsets.all(15),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          FavoriteSaintsPage(title: 'Favorite saints'),
-                    ),
-                  );
-                },
-                splashColor: Colors.blue.withAlpha(30),
-                child: Icon(Icons.star),
-              ))
+          IconButton(
+            icon: Icon(Icons.star),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      FavoriteSaintsPage(title: 'Favorite saints'),
+                ),
+              );
+            },
+            splashColor: Colors.blue.withAlpha(30),
+          )
         ],
       ),
       body: ListView(
@@ -54,12 +53,7 @@ class SaintDetails extends StatelessWidget {
         child: Icon(Icons.star),
         onPressed: () {
           Provider.of<FavoriteSaintsBloc>(context).addToFavorites.add(saint);
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => FavoriteSaintsPage(title: 'Favorite saints'),
-          //   ),
-          // );
+          showToast('Added to favorites', position: ToastPosition.bottom);
         },
       ),
     );

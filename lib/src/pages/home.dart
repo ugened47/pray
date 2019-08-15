@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pray/src/pages/favorite_saints.dart';
 import 'package:pray/src/widgets/saints_list.dart';
 import 'package:provider/provider.dart';
 import 'package:pray/src/notifiers/orthodox_calendar_notifier.dart';
@@ -19,6 +20,20 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title, style: TextStyle(fontSize: 48)),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.star),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      FavoriteSaintsPage(title: 'Favorite saints'),
+                ),
+              );
+            },
+          )
+        ],
       ),
       body: Center(
         child: ListOfSaints(),
@@ -81,7 +96,7 @@ class _ListOfSaintsState extends State<ListOfSaints> {
   @override
   Widget build(BuildContext context) {
     final saintsForToday =
-        Provider.of<OrthodoxCalendarNotifier>(context).saintsOfTheDay;
+        Provider.of<OrthodoxCalendarNotifier>(context).saints;
 
     return Column(
       children: <Widget>[

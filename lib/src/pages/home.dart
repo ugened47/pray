@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pray/src/pages/favorite_saints.dart';
 import 'package:pray/src/widgets/saints_list.dart';
 import 'package:provider/provider.dart';
 import 'package:pray/src/notifiers/orthodox_calendar_notifier.dart';
@@ -19,6 +20,23 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title, style: TextStyle(fontSize: 48)),
+        actions: <Widget>[
+          Padding(
+              padding: const EdgeInsets.all(15),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          FavoriteSaintsPage(title: 'Favorite saints'),
+                    ),
+                  );
+                },
+                splashColor: Colors.blue.withAlpha(30),
+                child: Icon(Icons.star),
+              ))
+        ],
       ),
       body: Center(
         child: ListOfSaints(),

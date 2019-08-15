@@ -15,7 +15,26 @@ class SaintDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(saint.title, style: TextStyle(fontSize: 48))),
+      appBar: AppBar(
+        title: Text(saint.title, style: TextStyle(fontSize: 48)),
+          actions: <Widget>[
+          Padding(
+              padding: const EdgeInsets.all(15),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          FavoriteSaintsPage(title: 'Favorite saints'),
+                    ),
+                  );
+                },
+                splashColor: Colors.blue.withAlpha(30),
+                child: Icon(Icons.star),
+              ))
+        ],
+      ),
       body: ListView(
         children: <Widget>[
           SaintIconsList(saint: saint),
@@ -35,12 +54,12 @@ class SaintDetails extends StatelessWidget {
         child: Icon(Icons.star),
         onPressed: () {
           Provider.of<FavoriteSaintsBloc>(context).addToFavorites.add(saint);
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => FavoriteSaintsPage(title: 'Favorite saints'),
-            ),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => FavoriteSaintsPage(title: 'Favorite saints'),
+          //   ),
+          // );
         },
       ),
     );

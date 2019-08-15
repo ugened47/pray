@@ -5,7 +5,7 @@ import 'package:pray/src/pages/home.dart';
 import 'package:provider/provider.dart';
 import 'package:oktoast/oktoast.dart';
 
-void main() async {
+void main() {
   runApp(
     MultiProvider(
       providers: [

@@ -81,7 +81,7 @@ class _ListOfSaintsState extends State<ListOfSaints> {
   @override
   Widget build(BuildContext context) {
     final saintsForToday =
-        Provider.of<OrthodoxCalendarNotifier>(context).saintsOfTheDay;
+        Provider.of<OrthodoxCalendarNotifier>(context).saints;
 
     return Column(
       children: <Widget>[

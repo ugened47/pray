@@ -29,6 +29,7 @@ dependencies:
   table_calendar: ^2.0.0
   provider: any
   transparent_image: any
+  rxdart: any
 
 dev_dependencies:
   flutter_test:

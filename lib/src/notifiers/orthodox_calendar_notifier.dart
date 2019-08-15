@@ -7,8 +7,9 @@ import 'package:http/http.dart' as http;
 const BASE_URL = 'https://azbyka.ru/days/api';
 
 class OrthodoxCalendarNotifier with ChangeNotifier {
-  List<Saint> saintsOfTheDay = [];
+  List<Saint> saints = [];
   bool isFetching = false;
+
 
   OrthodoxCalendarNotifier() {
     getSaintsOfTheDay();
@@ -37,7 +38,7 @@ class OrthodoxCalendarNotifier with ChangeNotifier {
     final response = await http.get('$BASE_URL/saints.json');
 
     if (response.statusCode == 200) {
-      saintsOfTheDay = parseSaint(response.body);
+      saints = parseSaint(response.body);
       isFetching = false;
       notifyListeners();
     } else {
@@ -52,7 +53,7 @@ class OrthodoxCalendarNotifier with ChangeNotifier {
     final response = await http.get('$BASE_URL/saints/$formatedDate.json');
 
     if (response.statusCode == 200) {
-      saintsOfTheDay = parseSaint(response.body);
+      saints = parseSaint(response.body);
       isFetching = false;
       notifyListeners();
     } else {

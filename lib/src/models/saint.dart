@@ -115,13 +115,13 @@ class Saint {
     isCathedral = json['is_cathedral'];
     saintsDatesStatsFltr = json['saints_dates_stats_fltr'];
     if (json['imgs'] != null) {
-      imgs = new List<Imgs>();
+      imgs = [];
       json['imgs'].forEach((v) {
         imgs.add(new Imgs.fromJson(v));
       });
     }
     if (json['taks'] != null) {
-      taks = new List<Taks>();
+      taks = [];
       json['taks'].forEach((v) {
         taks.add(new Taks.fromJson(v));
       });

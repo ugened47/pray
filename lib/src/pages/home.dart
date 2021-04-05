@@ -66,8 +66,8 @@ class _ListOfSaintsState extends State<ListOfSaints> {
     super.dispose();
   }
 
-  void _onDaySelected(DateTime day, List events) {
-    Provider.of<OrthodoxCalendarNotifier>(context).getSaintsForTheDate(day);
+  void _onDaySelected(DateTime day, List events, _) {
+    Provider.of<OrthodoxCalendarNotifier>(context, listen: false).getSaintsForTheDate(day);
   }
 
   Widget _buildTableCalendar() {
@@ -76,8 +76,8 @@ class _ListOfSaintsState extends State<ListOfSaints> {
       initialCalendarFormat: CalendarFormat.week,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
-        selectedColor: Colors.deepOrange[400],
-        todayColor: Colors.deepOrange[200],
+        selectedColor: Colors.amber[400],
+        todayColor: Colors.amber[200],
         markersColor: Colors.brown[700],
         outsideDaysVisible: false,
       ),
@@ -85,7 +85,7 @@ class _ListOfSaintsState extends State<ListOfSaints> {
         formatButtonTextStyle:
             TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
-          color: Colors.deepOrange[400],
+          color: Colors.amber[400],
           borderRadius: BorderRadius.circular(16.0),
         ),
       ),
@@ -96,7 +96,7 @@ class _ListOfSaintsState extends State<ListOfSaints> {
   @override
   Widget build(BuildContext context) {
     final saintsForToday =
-        Provider.of<OrthodoxCalendarNotifier>(context).saints;
+        Provider.of<OrthodoxCalendarNotifier>(context, listen: false).saints;
 
     return Column(
       children: <Widget>[

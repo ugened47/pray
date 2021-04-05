@@ -30,7 +30,7 @@ class SaintsList extends StatelessWidget {
       child: RefreshIndicator(
         key: _refreshIndicatorKey,
         onRefresh:
-            Provider.of<OrthodoxCalendarNotifier>(context).getSaintsOfTheDay,
+            Provider.of<OrthodoxCalendarNotifier>(context, listen: false).getSaintsOfTheDay,
         child: ListView.builder(
           physics: ClampingScrollPhysics(),
           shrinkWrap: true,

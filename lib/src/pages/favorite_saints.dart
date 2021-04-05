@@ -36,7 +36,7 @@ class FavoriteSaints extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: Provider.of<FavoriteSaintsBloc>(context).outFavorites,
+      stream: Provider.of<FavoriteSaintsBloc>(context, listen: false).outFavorites,
       initialData: <Saint>[],
       builder: (context, AsyncSnapshot<List<Saint>> snapshot) {
         if (!snapshot.hasData) return CircularProgressIndicator();

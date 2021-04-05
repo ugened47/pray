@@ -52,7 +52,7 @@ class SaintDetails extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.star),
         onPressed: () {
-          Provider.of<FavoriteSaintsBloc>(context).addToFavorites.add(saint);
+          Provider.of<FavoriteSaintsBloc>(context, listen: false).addToFavorites.add(saint);
           showToast('Added to favorites', position: ToastPosition.bottom);
         },
       ),

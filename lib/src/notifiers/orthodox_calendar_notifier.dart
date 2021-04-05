@@ -35,7 +35,7 @@ class OrthodoxCalendarNotifier with ChangeNotifier {
   Future<Null> getSaintsOfTheDay() async {
     isFetching = true;
     notifyListeners();
-    final response = await http.get('$BASE_URL/saints.json');
+    final response = await http.get(Uri.parse('$BASE_URL/saints.json'));
 
     if (response.statusCode == 200) {
       saints = parseSaint(response.body);
@@ -50,7 +50,7 @@ class OrthodoxCalendarNotifier with ChangeNotifier {
     isFetching = true;
     notifyListeners();
     final formatedDate = "${day.year}-${day.month}-${day.day}";
-    final response = await http.get('$BASE_URL/saints/$formatedDate.json');
+    final response = await http.get(Uri.parse('$BASE_URL/saints/$formatedDate.json'));
 
     if (response.statusCode == 200) {
       saints = parseSaint(response.body);

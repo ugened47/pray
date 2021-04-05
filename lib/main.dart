@@ -10,9 +10,9 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider<OrthodoxCalendarNotifier>(
-            builder: (_) => OrthodoxCalendarNotifier()),
+            create: (_) => OrthodoxCalendarNotifier()),
         Provider<FavoriteSaintsBloc>(
-          builder: (context) => FavoriteSaintsBloc(),
+          create: (context) => FavoriteSaintsBloc(),
           dispose: (context, bloc) => bloc.dispose(),
         )
       ],
